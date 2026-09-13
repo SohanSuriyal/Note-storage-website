@@ -406,8 +406,7 @@ async function deleteEverything(){
   });
   await load();
   renderSettings();
-}
-
+} 
 document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-page]').forEach(x=>x.classList.remove('active'));b.classList.add('active');({dashboard:renderDashboard,subjects:renderSubjects,recent:renderRecent,favorites:renderFav,settings:renderSettings}[b.dataset.page])()});
 document.getElementById('login').onclick=()=>{document.querySelector('[data-page="settings"]').click();};
 const drop=document.getElementById('drop');['dragenter','dragover'].forEach(e=>drop.addEventListener(e,x=>{x.preventDefault();drop.classList.add('drag')}));['dragleave','drop'].forEach(e=>drop.addEventListener(e,x=>{x.preventDefault();drop.classList.remove('drag')}));drop.addEventListener('drop',e=>{selectedFiles=[...e.dataTransfer.files].filter(f=>f.type==='application/pdf'||f.type.startsWith('image/'));renderFiles()});
